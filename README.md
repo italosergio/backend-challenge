@@ -1,6 +1,6 @@
-# Nome do Projeto
+# Italo Sergio - API Reddit - Desafio Backend Arrow Digital
 
-Uma breve descrição do projeto. Este projeto é um serviço que captura e armazena posts do Reddit.
+Este projeto é um serviço que captura e armazena posts do Reddit e possibilita através de pesquisa por api, filtrar os dados de acordo com numero de comentários ou ups do post.
 
 ## Pré-requisitos
 
