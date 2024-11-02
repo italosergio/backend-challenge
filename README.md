@@ -1,62 +1,126 @@
-# Desafio back end - Arrow Digital
+# Nome do Projeto
 
-## Tecnologias
+Uma breve descrição do projeto. Este projeto é um serviço que captura e armazena posts do Reddit.
 
-É obrigatório o uso das tecnologias abaixo:
+## Pré-requisitos
 
--   Node.js.
-- TypeScript.
--   Express. (ou qualquer outra biblioteca de roteamento de sua preferência)
--   MongoDB.
--   Mongoose.
+Antes de executar o projeto, verifique se você tem os seguintes itens instalados:
 
-## Desafio técnico
+- [Docker](https://www.docker.com/) + Docker Compose
 
-O desafio consiste em criar um programa que consulte a API do [Reddit](https://www.reddit.com/dev/api/) uma vez por dia (deve ser uma tarefa agendada para rodar em um horário específico que você definir).
+## Instalação
 
-A sua tarefa diária deve salvar, em um banco de dados, as postagens que estejam HOT do subreddit [artificial](https://api.reddit.com/r/artificial/hot).
+1. Clone o repositório `git clone https://github.com/arrow-digital/backend-challenger.git`
+2. Entre no repositório clonado `cd backend-challenger`
+3. Instale as dependências `npm i`
+4. Renomeie o arquivo `.env-exemple` para `.env`
 
-Você deve salvar o título da postagem, nome do autor, timestamp da criação da postagem, número de ups e número de comentários, e criar dois endpoints para consulta desses dados (endpoints REST).
+## Execução
 
-O primeiro endpoint deverá receber dois parâmetros: uma data de início e uma data final. Com base no período passado, o endpoint deve ser capaz de retornar todas as postagens desse período, ordenadas das postagens mais novas para as mais velhas.
+`sudo docker-compose up -d`
 
-**Exemplos de input:** 
-- Data de início: `2024-09-01T00:00:00.000Z`
-- Data de fim: `2024-09-31T00:00:00.000Z`
+## Parar
 
-O segundo endpoint deverá receber três parâmetros: uma data de início, uma data final e uma ordem. As ordens possíveis de serem passadas são: `ups` ou a `quantidade de comentários`. Com base nos parâmetros, o endpoint deve ser capaz de retornar todas as postagens desse período e ordenar com base no parâmetro passado. A ordenação deve ser decrescente, ou seja, do maior para o menor.
+`sudo docker-compose down`
 
-**Exemplos de input:** 
-- Data de início: `2024-09-01T00:00:00.000Z`
-- Data de fim: `2024-09-31T00:00:00.000`
-- Ordem: `comments` ou `ups`
+# DUCOMENTAÇÃO DA API
+A API expõe os seguintes endpoints:
 
-**OBS: Não se esqueça de incluir instruções sobre como executar o seu projeto no `README` do projeto.**
+1. Obter Posts
 
-##
+Método: GET
+URL: /posts
 
-**O que vamos avaliar:**
+Query Parameters:
+`start` (string): Data de início no formato ISO.
+`end` (string): Data de término no formato ISO.
 
--   **Se atende ao que foi pedido**
--   **Se segue o padrão RESTful**
--   **Arquitetura bem definida**
--   **Legibilidade e organização**
--   **Falhas de segurança**
--   **Tratamento de erros/exceções**
--   **Quantidade de bugs**
-- **Seguir o padrão [conventional commits](https://www.conventionalcommits.org/pt-br/v1.0.0/)**
-- **Boas práticas**
-
-**Pontos extras:**
-
--   **Testes unitários**
--   **Testes de integração**
--   **Uso de contêiner (Docker)**
--   **Documentação**
--   **Padrão de código (linter)**
-- **Projeto rodando em algum serviço cloud**
+EX.: `http://localhost:3000/posts?start=2024-09-01T00:00:00.000Z&end=2024-11-01T00:00:00.000Z`
 
 
-**Em caso de dúvidas, entre em contato com a pessoa que te passou este desafio.**
+Resposta de Sucesso
 
-Boa sorte.
+Código: `200 OK`
+Body:
+
+```
+
+[
+  {
+    "id": "post_id",
+    "title": "Título do post",
+    "created_utc": "2024-01-01T00:00:00Z",
+    ...
+  }
+]
+
+```
+
+
+Resposta de Erro
+
+Código: 400 Bad Request
+Body:
+
+```
+
+{
+  "error": "Parâmetros 'start' e 'end' são obrigatórios."
+}
+
+```
+
+2. Obter Posts Ordenados
+
+Método: GET
+URL: /posts/sorted
+
+Query Parameters:
+```start``` (string): Data de início no formato ISO.
+```end``` (string): Data de término no formato ISO.
+```order``` (string): Campo de ordenação. Pode ser 'ups' ou 'num_comments'.
+
+EX.: `http://localhost:3000/posts/sorted?start=2024-09-01T00:00:00.000Z&end=2024-11-01T00:00:00.000Z&order=num_comments`
+
+
+Resposta de Sucesso
+
+Código: 200 OK
+Body:
+
+```
+
+[
+  {
+    "id": "post_id",
+    "title": "Título do post",
+    "created_utc": "2024-01-01T00:00:00Z",
+    ...
+  }
+]
+
+```
+
+
+Resposta de Erro
+
+Código: 400 Bad Request
+Body:
+```
+
+{
+  "error": "Parâmetros 'start', 'end' e 'order' são obrigatórios."
+}
+
+```
+
+
+ou
+
+```
+
+{
+  "error": "Parâmetro de ordenação deve ser 'ups' ou 'num_comments'."
+}
+
+```
