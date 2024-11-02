@@ -6,5 +6,5 @@ module.exports = {
     '^.+\\.ts$': 'ts-jest',
   },
   testMatch: ['**/tests/**/*.test.ts'],
-  testTimeout: 15000, // Define o timeout global para 15 segundos
+  testTimeout: 15000,
 };

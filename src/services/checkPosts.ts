@@ -1,9 +1,7 @@
 import axios from 'axios';
 import readlineSync from 'readline-sync';
 
-// Função para converter datas do formato DDMMYYYY para ISO
 function convertToISO(dateString: string): string {
-  // Verifica se a data está no formato DDMMYYYY
   const regex = /^(\d{2})(\d{2})(\d{4})$/;
 
   const match = dateString.match(regex);
@@ -12,7 +10,7 @@ function convertToISO(dateString: string): string {
   }
 
   const day = Number(match[1]);
-  const month = Number(match[2]) - 1; // Ajusta o mês para zero-index
+  const month = Number(match[2]) - 1; 
   const year = Number(match[3]);
 
   const date = new Date(year, month, day);
@@ -20,12 +18,10 @@ function convertToISO(dateString: string): string {
 }
 
 async function checkPosts() {
-  // Obter a data de início do usuário
   const startDateInput = readlineSync.question('Insira a data de início (DDMMYYYY): ');
   const endDateInput = readlineSync.question('Insira a data de fim (DDMMYYYY): ');
 
   try {
-    // Converter as datas para o formato ISO
     const startDate = convertToISO(startDateInput);
     const endDate = convertToISO(endDateInput);
 
@@ -41,5 +37,4 @@ async function checkPosts() {
   }
 }
 
-// Chamar a função para checar os posts
 checkPosts();
