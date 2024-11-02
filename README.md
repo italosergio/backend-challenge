@@ -29,22 +29,25 @@ A API expõe os seguintes endpoints:
 1. Obter Posts
 
 Método: GET
-URL: /posts
+URL: `/posts`
 
 Query Parameters:
+
+
 `start` (string): Data de início no formato ISO.
+
 `end` (string): Data de término no formato ISO.
 
-EX.: `http://localhost:3000/posts?start=2024-09-01T00:00:00.000Z&end=2024-11-01T00:00:00.000Z`
 
+EX.: `http://localhost:3000/posts?start=2024-09-01T00:00:00.000Z&end=2024-12-31T00:00:00.000Z`
+
+***certifique-se de colocar a data desejada correta
 
 Resposta de Sucesso
-
 Código: `200 OK`
 Body:
 
 ```
-
 [
   {
     "id": "post_id",
@@ -53,38 +56,38 @@ Body:
     ...
   }
 ]
-
 ```
 
 
 Resposta de Erro
-
 Código: 400 Bad Request
 Body:
 
 ```
-
 {
   "error": "Parâmetros 'start' e 'end' são obrigatórios."
 }
-
 ```
 
 2. Obter Posts Ordenados
 
 Método: GET
-URL: /posts/sorted
+URL: `/posts/sorted`
 
 Query Parameters:
+
+
 ```start``` (string): Data de início no formato ISO.
+
 ```end``` (string): Data de término no formato ISO.
+
 ```order``` (string): Campo de ordenação. Pode ser 'ups' ou 'num_comments'.
+
 
 EX.: `http://localhost:3000/posts/sorted?start=2024-09-01T00:00:00.000Z&end=2024-11-01T00:00:00.000Z&order=num_comments`
 
 
 Resposta de Sucesso
-
 Código: 200 OK
 Body:
 
@@ -103,7 +106,6 @@ Body:
 
 
 Resposta de Erro
-
 Código: 400 Bad Request
 Body:
 ```
