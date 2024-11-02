@@ -1,0 +1,35 @@
+# Dependências do Node
+node_modules/
+
+# Compilação do TypeScript
+dist/
+build/
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Sistema de arquivos
+.DS_Store
+Thumbs.db
+
+# Testes
+coverage/
+*.lcov
+
+# Docker
+docker-compose.override.yml
+.docker/
