@@ -12,13 +12,14 @@ Antes de executar o projeto, verifique se você tem os seguintes itens instalado
 
 1. Clone o repositório `git clone https://github.com/italosergio/backend-challenge.git`
 2. Entre no repositório clonado `cd backend-challenge`
-3. Renomeie um dos arquivos `.env-exemple-development` ou `.env-exemple-production` para `.env`.
+3. Crie `.env`.
+   * no projeto já existem dois modelos para criação das variáveis de ambiente, então podemos só renomea-los:
 
-   `mv .env-exemple-development .env`
+   `mv .env-development-exemple .env`
    
    ou
    
-   `mv .env-exemple-production .env`
+   `mv .env-production-exemple .env`
 
 
   obs.: aqui existem dois tipos de .env já preparados para melhor noção de como uso dotenv em produção e em desenvolvimento. A grande diferença, além das credenciais de db de cada modelo, é que no arquivo sec/index.ts é usada a variável de ambiente NODE_ENV para definir o uso da _função de agendamento de busca de posts_ uma vez por dia (PRODUÇÂO) e realiza busca instantaneamente para efeito de desenvolvimento e checkagem dos dados instantaneamente, sem ter que esperar pela busca programada, facilitando a vida do avaliador do desafio.
