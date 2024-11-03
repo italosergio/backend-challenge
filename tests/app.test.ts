@@ -1,5 +1,4 @@
 import request from 'supertest';
-import express from 'express';
 import post from '../src/models/Post';
 import connectMongo from '../src/database/config';
 import app from '../src/index';
