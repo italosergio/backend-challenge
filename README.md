@@ -19,9 +19,18 @@ Antes de executar o projeto, verifique se você tem os seguintes itens instalado
 
 `sudo docker-compose up -d`
 
-## Parar
+## Parar Aplicação
 
 `sudo docker-compose down`
+
+## Testes
+
+`npm test`
+
+## Lint 
+
+`npm run lint`
+
 
 # DUCOMENTAÇÃO DA API
 A API expõe os seguintes endpoints:
