@@ -12,6 +12,12 @@ services:
       - mongodb_network
     ports:
       - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5 
+      start_period: 30s
 
   app:
     container_name: italosergio_app_reddit_api
@@ -24,7 +30,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy  # espera até o MongoDB ser considerado "healthy" para iniciar o app
 
 volumes:
   mongo_data:
