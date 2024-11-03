@@ -64,17 +64,23 @@ Próxima requisição de Posts HOT do Reddit agendada para às 12 horas
 
 
 ```
- 
+
 
 ## Parar Aplicação
 
 `sudo docker-compose down --volumes --remove-orphans`
 
 ## Testes
+***a versao node utilizada pra esse projeto é a JOD ou v22.11.0
+
+`npm i`
 
 `npm test`
 
 ## Lint 
+***a versao node utilizada pra esse projeto é a JOD ou v22.11.0
+
+`npm i`
 
 `npm run lint`
 
