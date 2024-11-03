@@ -12,7 +12,7 @@ Antes de executar o projeto, verifique se você tem os seguintes itens instalado
 
 1. Clone o repositório `git clone https://github.com/italosergio/backend-challenge.git`
 2. Entre no repositório clonado `cd backend-challenge`
-4. Renomeie o arquivo `.env-exemple` para `.env`. (Podemos usar `mv .env-exemplo .env`)
+4. Renomeie o arquivo `.env-exemple` para `.env`. (Podemos usar `mv .env-exemple .env`)
 
 ## Execução
 
